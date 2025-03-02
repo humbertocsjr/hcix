@@ -76,3 +76,8 @@ typedef struct patuafs_alloc_list_t
 {
     patuafs_alloc_node_t nodes[32];
 } patuafs_alloc_list_t;
+
+
+void disk_open(char *name);
+int disk_read(uint32_t address, void *block);
+int disk_write(uint32_t address, void *block);
