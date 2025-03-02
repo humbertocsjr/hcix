@@ -79,9 +79,18 @@ typedef struct patuafs_alloc_list_t
     patuafs_alloc_node_t nodes[32];
 } patuafs_alloc_list_t;
 
+typedef struct patuafs_mount_t
+{
+    patuafs_index_t index;
+    patuafs_disk_t *disk;
+} patuafs_mount_t;
 
-void disk_open(char *name);
-int disk_read(uint32_t address, void *block);
-int disk_write(uint32_t address, void *block);
+typedef FILE patuafs_disk_t;
+
+#define PATUAFS_INDEX_ADDRESS 16
+
+int disk_open(patuafs_mount_t *mnt, char *name);
+int disk_read(patuafs_mount_t *mnt, uint32_t address, void *block);
+int disk_write(patuafs_mount_t *mnt, uint32_t address, void *block);
 
 #endif
