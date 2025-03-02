@@ -1,4 +1,6 @@
 // Patuã File System
+#ifndef  PATUAFS_H
+#define  PATUAFS_H
 #include <stdint.h>
 #include <stdio.h>
 #include <stddef.h>
@@ -6,7 +8,7 @@
 
 typedef struct patuafs_index_t
 {
-    uint32_t signatura;
+    uint32_t signature;
     uint32_t fs_version;
     uint32_t backup_version;
     uint32_t inode_version;
@@ -22,7 +24,7 @@ typedef struct patuafs_index_t
     uint32_t backup_address;
 } patuafs_index_t;
 
-typedef patuafs_backup_t
+typedef struct patuafs_backup_t
 {
     uint32_t counter;
     uint32_t address;
@@ -62,7 +64,7 @@ typedef struct patuafs_inode_t
 typedef struct patuafs_inode_list_t
 {
     patuafs_inode_t inodes[8];
-} patuafs_alloc_list_t;
+} patuafs_inode_list_t;
 
 typedef struct patuafs_alloc_node_t
 {
@@ -81,3 +83,5 @@ typedef struct patuafs_alloc_list_t
 void disk_open(char *name);
 int disk_read(uint32_t address, void *block);
 int disk_write(uint32_t address, void *block);
+
+#endif
