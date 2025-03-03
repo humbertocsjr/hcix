@@ -69,7 +69,7 @@ typedef struct patuafs_inode_list_t
 #define PATUAFS_MASK_BLOCK_NUMBER 0x00ffffff
 #define PATUAFS_MASK_HIGH 0xff000000
 #define PATUAFS_GET_BLOCK_NUMBER(blk_num) (blk_num & PATUAFS_GET_BLOCK_NUMBER)
-#define PATUAFS_GET_HIGH(blk_num) ((blk_num & PATUAFS_MASK_HIGH)>>24)
+#define PATUAFS_GET_HEIGHT(blk_num) ((blk_num & PATUAFS_MASK_HIGH)>>24)
 
 typedef struct patuafs_alloc_node_t
 {
