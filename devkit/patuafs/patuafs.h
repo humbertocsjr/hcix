@@ -66,6 +66,11 @@ typedef struct patuafs_inode_list_t
     patuafs_inode_t inodes[8];
 } patuafs_inode_list_t;
 
+#define PATUAFS_MASK_BLOCK_NUMBER 0x00ffffff
+#define PATUAFS_MASK_HIGH 0xff000000
+#define PATUAFS_GET_BLOCK_NUMBER(blk_num) (blk_num & PATUAFS_GET_BLOCK_NUMBER)
+#define PATUAFS_GET_HIGHT(blk_num) ((blk_num & PATUAFS_MASK_HIGH)>>24)
+
 typedef struct patuafs_alloc_node_t
 {
     uint32_t block_number;
