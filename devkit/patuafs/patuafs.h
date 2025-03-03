@@ -67,22 +67,25 @@ typedef struct patuafs_inode_list_t
     patuafs_inode_t inodes[8];
 } patuafs_inode_list_t;
 
-#define PATUAFS_MASK_BLOCK_NUMBER 0x00ffffff
-#define PATUAFS_MASK_HIGH 0xff000000
-#define PATUAFS_GET_BLOCK_NUMBER(blk_num) (blk_num & PATUAFS_GET_BLOCK_NUMBER)
-#define PATUAFS_GET_HEIGHT(blk_num) ((blk_num & PATUAFS_MASK_HIGH)>>24)
+#define PATUAFS_ALLOC_BLOCKS_MAX 5
+#define PATUAFS_ALLOC_POINTERS_MAX 6
+#define PATUAFS_ALLOC_NODES_MAX 16
+
+typedef struct patuafs_alloc_block_t
+{
+    uint32_t index;
+    uint32_t data_address;
+} patuafs_alloc_block_t;
 
 typedef struct patuafs_alloc_node_t
 {
-    uint32_t block_number;
-    uint32_t left;
-    uint32_t right;
-    uint32_t data_address;
+    patuafs_alloc_block_t blocks[PATUAFS_ALLOC_ITEMS_MAX];
+    uint32_t pointers[PATUAFS_ALLOC_POINTERS_MAX];
 } patuafs_alloc_node_t;
 
 typedef struct patuafs_alloc_list_t
 {
-    patuafs_alloc_node_t nodes[32];
+    patuafs_alloc_node_t nodes[PATUAFS_ALLOC_NODES_MAX];
 } patuafs_alloc_list_t;
 
 typedef FILE patuafs_disk_t;
