@@ -10,6 +10,7 @@ int disk_open(patuafs_mount_t *mnt, char *name)
         fprintf(stderr, "error: can't open disk: %s\n", name);
         exit(1);
     }
+    return 1;
 }
 
 int disk_read(patuafs_mount_t *mnt, uint32_t address, void *block)

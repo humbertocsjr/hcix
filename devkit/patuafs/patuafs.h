@@ -3,6 +3,7 @@
 #define  PATUAFS_H
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <stddef.h>
 #include <string.h>
 
@@ -84,13 +85,13 @@ typedef struct patuafs_alloc_list_t
     patuafs_alloc_node_t nodes[32];
 } patuafs_alloc_list_t;
 
+typedef FILE patuafs_disk_t;
+
 typedef struct patuafs_mount_t
 {
     patuafs_index_t index;
     patuafs_disk_t *disk;
 } patuafs_mount_t;
-
-typedef FILE patuafs_disk_t;
 
 #define PATUAFS_INDEX_ADDRESS 16
 
